@@ -27,7 +27,7 @@ class Storage {
 }
 
 const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
-console.log('Get items:', storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+console.log('Get items:', '\n', storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 
 storage.addItem('Droid');
 console.log('Add "Droid":', storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
