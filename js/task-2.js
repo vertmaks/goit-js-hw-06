@@ -1,8 +1,42 @@
-function getShippingMessage(country, price, deliveryFee) {
-  const totalPrice = price + deliveryFee;
-  return `Shipping to ${country} will cost ${totalPrice} credits`;
+console.group('Задача 2. Склад');
+// Створи клас Storage, який створюватиме об'єкти для управління складом товарів. Клас очікує лише один аргумент — початковий масив товарів, який записується до створеного об'єкта в приватну властивість items.
+
+// Оголоси наступні методи класу:
+// getItems() — повертає масив поточних товарів у приватній властивості items.
+// addItem(newItem) — приймає новий товар newItem і додає його до масиву товарів у приватну властивість items об'єкта.
+// removeItem(itemToRemove) — приймає рядок з назвою товару itemToRemove і видаляє його з масиву товарів у приватній властивості items об'єкта.
+
+class Storage {
+  #items;
+
+  constructor(items) {
+    this.#items = items;
+  }
+
+  getItems() {
+    return this.#items;
+  }
+
+  addItem(newItem) {
+    this.#items.push(newItem);
+  }
+
+  removeItem(itemToRemove) {
+    this.#items = this.#items.filter(item => item !== itemToRemove);
+  }
 }
 
-console.log(getShippingMessage('Australia', 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage('Germany', 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage('Sweden', 100, 20)); // "Shipping to Sweden will cost 120 credits
+const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+console.log('Get items:', storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+
+storage.addItem('Droid');
+console.log('Add "Droid":', storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+
+storage.removeItem('Prolonger');
+console.log('Remove "Prolonger":', storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+storage.removeItem('Scaner');
+console.log('Remove "Scaner":', storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+console.groupEnd();
+console.log('\n');
